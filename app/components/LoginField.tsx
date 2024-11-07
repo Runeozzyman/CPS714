@@ -7,13 +7,14 @@ import Link from "next/link";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [visible, setVisible] = useState(false);
   const router = useRouter();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Username:", username);
     console.log("Password:", password);
-    router.push("/loginSuccess");
+    router.push("/Home");
   };
 
   return (
@@ -43,7 +44,7 @@ export default function Login() {
             Password
           </label>
           <input
-            type="password"
+            type={visible ? "text" : "password"}
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -51,6 +52,18 @@ export default function Login() {
             required
           />
         </div>
+        <label className="px-1 inline-flex items-center mb-5 cursor-pointer">
+          <input
+            type="checkbox"
+            value=""
+            className="sr-only peer"
+            onChange={(e) => setVisible(!visible)}
+          />
+          <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-900">
+            Show Password
+          </span>
+        </label>
         <button
           type="submit"
           className="w-full py-2 text-white bg-blue-500 rounded hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-900"
