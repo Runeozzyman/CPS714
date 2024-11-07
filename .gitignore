@@ -10,6 +10,8 @@
 !.yarn/releases
 !.yarn/versions
 /Backend/.venv
+/Backend/_pycache_
+
 # testing
 /coverage
 
