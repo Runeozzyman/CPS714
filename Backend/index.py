@@ -6,7 +6,7 @@ CORS(app)
 @app.route("/api/home", methods=['GET'])
 def Backend():
     return jsonify ({
-        'message':"Hello To The World!"
+        'message':"Greeting from the Backend",
     })
 
 if __name__=='__main__': #To enable debug mode
