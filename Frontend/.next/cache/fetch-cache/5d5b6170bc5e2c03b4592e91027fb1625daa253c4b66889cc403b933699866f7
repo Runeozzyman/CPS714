@@ -1,0 +1,1 @@
+{"kind":"FETCH","data":{"headers":{"access-control-allow-origin":"*","connection":"close","content-length":"39","content-type":"application/json","date":"Thu, 07 Nov 2024 08:03:37 GMT","server":"Werkzeug/3.1.2 Python/3.12.6"},"body":"ewogICJtZXNzYWdlIjogIkhlbGxvIFRvIFRoZSBXb3JsZCEiCn0K","status":200,"url":"http://127.0.0.1:8080/api/home"},"revalidate":10,"tags":[]}
