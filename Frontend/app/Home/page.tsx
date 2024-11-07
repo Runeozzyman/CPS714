@@ -1,3 +1,4 @@
+import { setDefaultAutoSelectFamily } from "net";
 import React, { useState, useEffect, Fragment } from "react";
 
 interface geo {
@@ -30,7 +31,7 @@ const Home = async () => {
   });
   const users: Users[] = await res.json();
   const message = await fetch("http://127.0.0.1:8080/api/home", {
-    next: { revalidate: 10 },
+    cache: "no-store",
   });
   const mess: Message = await message.json();
   console.log(mess);
