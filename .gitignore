@@ -16,11 +16,11 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+/Frontend/.next/
+/Frontend/out/
 
 # production
-/build
+/Frontend/build
 
 # misc
 .DS_Store
@@ -35,8 +35,8 @@ yarn-error.log*
 .env*
 
 # vercel
-.vercel
+/Frontend/.vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+/Frontend/next-env.d.ts
