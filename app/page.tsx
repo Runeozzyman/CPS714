@@ -16,6 +16,13 @@ export default function Login() {
     router.push("/loginSuccess");
   };
 
+  const handleRegister = (e: React.FormEvent) =>{
+  e.preventDefault();  
+  router.push("/register"); 
+
+
+  }
+
   return (
 
 
@@ -63,6 +70,17 @@ export default function Login() {
           >
             Login
           </button>
+        </form>
+
+        <form onSubmit={handleRegister} className="space-y-4">
+        
+        <button
+            type="submit"
+            className="w-full py-2 text-white bg-yellow-500 rounded hover:bg-yellow-500 focus:outline-none focus:ring focus:ring-yellow-300"
+          >
+            Register
+          </button>
+
         </form>
       </div>
     </div>
