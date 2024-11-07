@@ -19,20 +19,18 @@ export default function Login() {
   const handleRegister = (e: React.FormEvent) =>{
   e.preventDefault();  
   router.push("/register"); 
-
-
-  }
+  };
 
   return (
 
 
     <div className="flex items-center justify-center min-h-screen bg-cover bg-center" style={{backgroundImage: "url('/background.jpg')"}}>
-      <div className="w-full max-w-xs p-6 bg-white bg-opacity-80 rounded shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6 text-black">Login</h2>
+      <div className="w-full max-w-xs p-6 bg-white bg-opacity-80 rounded shadow-md ">
+        <h2 className="text-2xl font-bold text-center mb-6 text-black">Welcome to Fleet Rewards</h2>
 
         
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-3">
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-black">
               Username
@@ -72,7 +70,7 @@ export default function Login() {
           </button>
         </form>
 
-        <form onSubmit={handleRegister} className="space-y-4">
+        <form onSubmit={handleRegister} className="space-y-4 pt-3">
         
         <button
             type="submit"
