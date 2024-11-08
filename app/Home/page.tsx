@@ -1,5 +1,4 @@
-import { setDefaultAutoSelectFamily } from "net";
-import React, { useState, useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Message } from "../interfaces/message";
 import { Users } from "../interfaces/users";
 import Username from "../components/UserName";
@@ -38,7 +37,7 @@ const Home = async () => {
               <li style={{ paddingLeft: "15px" }}>
                 Email = {user.email}
                 <br />
-                Address = {user.address.street}, {user.address.suite},{" "}
+                Address = {user.address.street}, {user.address.suite},
                 {user.address.city}
                 <br />
                 Zipcode = {user.address.zipcode}

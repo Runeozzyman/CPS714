@@ -1,15 +1,8 @@
-import { Fragment, useState } from "react";
-import { useRouter } from "next/navigation";
-import { Router } from "next/router";
+import { Fragment } from "react";
 import Link from "next/link";
 import LoginField from "./components/LoginField";
 
 export default function Login() {
-  /*const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push("/register");
-  };*/
-
   return (
     <Fragment>
       <div
@@ -26,7 +19,10 @@ export default function Login() {
           </button>
           <br />
           <Link href="/api/python">
-            <code className="font-mono font-bold">api/index.py</code>
+            <br />
+            <code className="py-20 px-20 text-gray-600 font-mono font-bold">
+              api/index.py
+            </code>
           </Link>
         </div>
       </div>

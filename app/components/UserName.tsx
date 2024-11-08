@@ -2,7 +2,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { UsernameMessage } from "../interfaces/UsernameMessage";
 
-const Username = () => {
+export default function Username() {
   const [message, setMessage] = useState<UsernameMessage | null>(null);
 
   useEffect(() => {
@@ -30,6 +30,4 @@ const Username = () => {
       )}
     </Fragment>
   );
-};
-
-export default Username;
+}
