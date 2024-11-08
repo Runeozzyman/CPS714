@@ -1,6 +1,6 @@
-import { Address } from "./address.types";
+import { Address } from "./address";
 
-export type Users = {
+export interface Users {
     id: number;
     name: string;
     username: string;

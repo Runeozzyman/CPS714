@@ -1,4 +1,4 @@
-export type geo = {
+export interface geo {
     lat: number;
     lng: number;
   }

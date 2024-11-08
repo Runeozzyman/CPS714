@@ -1,6 +1,6 @@
-import { geo } from "./geo.type";
+import { geo } from "./geo";
 
-export type Address = {
+export interface Address {
     street: string;
     suite: string;
     city: string;

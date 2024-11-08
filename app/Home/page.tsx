@@ -1,7 +1,8 @@
 import { setDefaultAutoSelectFamily } from "net";
 import React, { useState, useEffect, Fragment } from "react";
-import { Message } from "../types/message.type";
-import { Users } from "../types/users.type";
+import { Message } from "../interfaces/message";
+import { Users } from "../interfaces/users";
+import Username from "../components/UserName";
 
 const Home = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users", {
@@ -18,6 +19,8 @@ const Home = async () => {
       <div className="flex items-center justify-center min-h-screen bg-white">
         <h1 className="text-4xl font-bold text-black">
           Successful Login <br />
+          <Username />
+          <br />
           {mess.message}
         </h1>
         <br />
