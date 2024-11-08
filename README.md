@@ -1,9 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
-First, Make sure you have all the dependencies by using the following commands in the root directory of the project.
-1: "npm install"
-2: "npm install -g pnpm" or  if error on Mac use "sudo npm install -g pnpm"
+First, Make sure you have all the dependencies by using the following commands in the root directory of the project.<br/>
+1: "npm install" <br/>
+2: "npm install -g pnpm" or  if error on Mac use "sudo npm install -g pnpm"<br/>
 
 Second, to run the development server:
 ```bash
