@@ -19,8 +19,7 @@ export default function Login() {
           </button>
           <br />
           <Link href="/api/python">
-            <br />
-            <code className="py-20 px-20 text-gray-600 font-mono font-bold">
+            <code className="px-20 text-gray-600 font-mono font-bold">
               api/index.py
             </code>
           </Link>
