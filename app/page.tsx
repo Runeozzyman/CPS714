@@ -24,6 +24,10 @@ export default function Login() {
           <button className="w-full py-2 text-white bg-yellow-500 rounded hover:bg-yellow-800 focus:outline-none focus:ring focus:ring-yellow-900">
             <Link href={"/register"}>Register</Link>
           </button>
+          <br />
+          <Link href="/api/python">
+            <code className="font-mono font-bold">api/index.py</code>
+          </Link>
         </div>
       </div>
     </Fragment>

@@ -6,6 +6,10 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/api/python")
+def hello_world():
+    return "<p>Hello, World!</p>"
+
 @app.route("/api/home", methods=['GET'])
 def Backend():
     current_time = datetime.now().strftime("%H:%M:%S")
@@ -25,4 +29,4 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 401
 
 if __name__=='__main__': #To enable debug mode
-    app.run(debug=True, port=8080)
+    app.run(port=8080)
