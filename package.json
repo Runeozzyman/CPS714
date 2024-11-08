@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "flask-dev": "pip install -r requirements.txt && python -m flask --app api/index run -p 8080 --debug ",
-    "next-dev": "next dev",
-    "dev": "concurrently \"pnpm run next-dev\" \"pnpm run flask-dev\"",
+    "flask-dev1": "pip install -r requirements.txt && python -m flask --app api/index run -p 8080 --debug ",
+    "flask-dev2": "pip3 install -r requirements.txt && python3 -m flask --app api/index run -p 8080 --debug ",
+    "next-dev": "next dev && npm install -g pnpm",
+    "Windev": "concurrently \"pnpm run next-dev\" \"pnpm run flask-dev1\"",
+    "Macdev": "concurrently \"pnpm run next-dev\" \"pnpm run flask-dev2\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

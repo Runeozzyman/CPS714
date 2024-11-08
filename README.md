@@ -1,19 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
-First, Make sure you have all the dependencies by using the command "npm install" in the root directory of the project.
+First, Make sure you have all the dependencies by using the following commands in the root directory of the project.
+1: "npm install"
+2: "npm install -g pnpm
 
-Second, run the development server:
-
+Second, to run the development server:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# For Windows
+npm run Windev
+# For Mac
+npm run Macdev
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
