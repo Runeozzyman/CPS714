@@ -7,4 +7,4 @@ Steps:
 5: Set Environment Variable " $env:FLASK_APP = "index" "
 6: Run the application using " flask --app index run " (not necessary anymore)
 7: Run in Debug mode with " python index.py "
-8: Check Link 'http://127.0.0.1:8080/api/home"
+8: Check Link 'http://127.0.0.1:8080/api/home'
