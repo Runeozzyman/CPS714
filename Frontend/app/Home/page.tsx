@@ -1,29 +1,7 @@
 import { setDefaultAutoSelectFamily } from "net";
 import React, { useState, useEffect, Fragment } from "react";
-
-interface geo {
-  lat: number;
-  lng: number;
-}
-interface Address {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: string;
-  geo: geo;
-}
-
-interface Users {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-  address: Address;
-}
-interface Message {
-  message: string;
-}
+import { Message } from "../types/message.type";
+import { Users } from "../types/users.type";
 
 const Home = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users", {

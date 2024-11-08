@@ -1,13 +1,13 @@
 "use client";
 import { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Router } from "next/router";
 import Link from "next/link";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -23,9 +23,10 @@ export default function Login() {
     if (response.ok) {
       const data = await response.json();
       console.log("Login successful:", data);
-      router.push("/loginSuccess");
+      router.push("/Home");
     } else {
-      console.error("Login failed");
+      const errorData = await response.json();
+      setErrorMessage(errorData.message || "Login failed");
     }
   };
 
@@ -64,6 +65,9 @@ export default function Login() {
             required
           />
         </div>
+        {errorMessage && (
+          <div className="text-red-500 text-sm">Error: {errorMessage}</div>
+        )}
         <label className="px-1 inline-flex items-center mb-5 cursor-pointer">
           <input
             type="checkbox"
