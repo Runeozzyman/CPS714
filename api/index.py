@@ -14,7 +14,7 @@ def hello_world():
 def Backend():
     current_time = datetime.now().strftime("%H:%M:%S")
     return jsonify({
-        'message': f"Greetings from the Backend at {current_time}",
+        'message': f"A Warm Greetings from the Backend at {current_time}",
     })
 
 @app.route("/api/login", methods=['POST'])
@@ -29,4 +29,4 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 401
 
 if __name__=='__main__': #To enable debug mode
-    app.run(port=8080)
+    app.run(port=8080, debug=True)
