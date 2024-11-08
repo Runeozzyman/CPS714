@@ -10,11 +10,23 @@ export default function Login() {
   const [visible, setVisible] = useState(false);
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
-    router.push("/Home");
+    const response = await fetch("http://127.0.0.1:8080/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Login successful:", data);
+      router.push("/loginSuccess");
+    } else {
+      console.error("Login failed");
+    }
   };
 
   return (
