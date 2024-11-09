@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 
 export const handleRegister = async (
   e: React.FormEvent,
-  fullname: string,
+  username: string,
   email: string,
   password: string,
   phone: string,
@@ -12,12 +12,12 @@ export const handleRegister = async (
 ) => {
   e.preventDefault();
 
-  const response = await fetch("http://127.0.0.1:8080/api/register", {
+  const response = await fetch("http://127.0.0.1:8080/api/database", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ fullname, email, password, phone, role }), // Include role in the request body
+    body: JSON.stringify({ username, email, password, phone, role }), // Include role in the request body
   });
 
   if (response.ok) {
