@@ -1,8 +1,17 @@
+import { Fragment } from "react";
+import RegisterForm from "../components/RegisterForm";
+
 export default function LoginSuccess() {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-white">
-        <h1 className="text-4xl font-bold text-black">Register Page</h1>
+  return (
+    <Fragment>
+      <div className="flex items-center justify-center bg-white dark:bg-gray-900 ">
+        <h1 className="text-4xl font-bold text-black dark:text-white">
+          Sign Up
+        </h1>
       </div>
-    );
-  }
-  
+      <div className="bg-white dark:bg-gray-900 min-h-screen">
+        <RegisterForm />
+      </div>
+    </Fragment>
+  );
+}

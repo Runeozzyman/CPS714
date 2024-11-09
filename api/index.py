@@ -11,6 +11,10 @@ from routes.database import data_bp  # Import the new blueprint
 app = Flask(__name__)
 CORS(app)
 
+# MongoDB configuration
+app.config["MONGO_URI"] = "mongodb://localhost:27017/COE714"
+mongo = PyMongo(app)
+
 # Register Blueprints
 app.register_blueprint(home_bp)
 app.register_blueprint(login_bp)
