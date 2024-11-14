@@ -14,9 +14,11 @@ export default function Login() {
             Login
           </h2>
           <LoginField />
-          <button className="w-full py-2 text-white bg-yellow-500 rounded hover:bg-yellow-800 focus:outline-none focus:ring focus:ring-yellow-900">
-            <Link href={"/register"}>Sign Up</Link>
-          </button>
+          <a href="/register">
+            <button className="w-full px-4 py-2  text-white bg-yellow-500 rounded hover:bg-yellow-800 focus:outline-none focus:ring focus:ring-yellow-900">
+              Sign Up
+            </button>
+          </a>
           <br />
           <Link href="/api/python">
             <code className="px-20 text-gray-600 font-mono font-bold">

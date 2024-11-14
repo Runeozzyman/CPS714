@@ -18,10 +18,10 @@ export default function RegisterForm() {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
+  /*useEffect(() => {
     // Fetch the list of companies from the backend
     const fetchCompanies = async () => {
-      /*try {
+      try {
         const response = await fetch(
           "http://127.0.0.1:8080/api/database/companies"
         );
@@ -29,11 +29,11 @@ export default function RegisterForm() {
         setCompanies(data.companies);
       } catch (error) {
         console.error("Error fetching companies:", error);
-      }*/
+      }
     };
 
     fetchCompanies();
-  }, []);
+  }, []);*/
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
