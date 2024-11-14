@@ -24,12 +24,16 @@ def add_data():
     mongo = current_app.extensions['pymongo']
     new_data = request.json
 
+    # Set default value for loyaltypoints if not provided
+    loyaltypoints = new_data.get('loyaltypoints', 0)  # Default to 0
+
     # Extract the fields from the incoming data
     username = new_data.get('username')
     email = new_data.get('email')
     password = new_data.get('password')
     phone = new_data.get('phone')
     role = new_data.get('role')
+    
 
     # Hash the password using the encrypt_password function
     hashed_password =  bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
@@ -41,7 +45,9 @@ def add_data():
         'email': email,
         'password': hashed_password,
         'phone': phone,
-        'role': role
+        'role': role,
+        'loyaltypoints': loyaltypoints  # Default loyaltypoints to 0
+
     }
 
     # Insert the new entry into the database
