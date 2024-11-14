@@ -14,6 +14,8 @@
 /api/routes/__pycache__
 /api/services/__pycache__
 
+*.pyc
+
 # testing
 /coverage
 
