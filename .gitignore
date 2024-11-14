@@ -11,6 +11,8 @@
 !.yarn/versions
 /api/.venv
 /api/__pycache__
+/api/routes/__pycache__
+/api/services/__pycache__
 
 # testing
 /coverage
