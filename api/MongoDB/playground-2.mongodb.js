@@ -13,8 +13,12 @@ db.createCollection(collection, {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
-      required: ['username', 'password', 'email', 'phone', 'role'],
+      required: ['fullname', 'username', 'password', 'email', 'phone', 'role', 'loyaltypoints'],
       properties: {
+        fullname: {
+          bsonType: 'string',
+          description: 'must be a string and is required'
+        },
         username: {
           bsonType: 'string',
           description: 'must be a string and is required'
@@ -37,7 +41,7 @@ db.createCollection(collection, {
         },
         loyaltypoints: {
           bsonType: 'number',
-          description: 'must be an integer and defaults to 0 if not provided',
+          description: 'must be an integer and defaults to 0 if not provided'
         }
       }
     }
@@ -50,6 +54,7 @@ db.getCollection(collection).createIndex({ username: 1 }, { unique: true });
 // 3. Insert a sample document to verify constraints (for testing purposes).
 try {
   db.getCollection(collection).insertOne({
+    fullname: 'Sample Smith',
     username: 'sampleUser',
     password: new BinData(0, "hashed_password_here"),
     email: 'user@example.com',
