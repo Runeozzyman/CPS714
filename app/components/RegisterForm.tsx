@@ -10,7 +10,7 @@ export default function RegisterForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const [selectedRole, setSelectedRole] = useState({ id: 1, name: "Admin" }); // New state for selected role
+  const [selectedRole, setSelectedRole] = useState({ id: 1, name: "Driver" }); // New state for selected role
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const router = useRouter();
@@ -41,6 +41,8 @@ export default function RegisterForm() {
         onSubmit={handleSubmit}
         className="space-y-4 w-full max-w-xs p-6 bg-white bg-opacity-80 rounded shadow-md "
       >
+        {" "}
+        <h1 className="text-center text-4xl font-bold text-black">Sign Up</h1>
         <div>
           <label
             htmlFor="fullname"
@@ -76,7 +78,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-black dark:text-white"
+            className="block text-sm font-medium text-black "
           >
             Email:
           </label>
@@ -92,7 +94,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-black dark:text-white"
+            className="block text-sm font-medium text-black "
           >
             Password:
           </label>
@@ -108,7 +110,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="confirmPassword"
-            className="block text-sm font-medium text-black dark:text-white"
+            className="block text-sm font-medium text-black "
           >
             Confirm Password:
           </label>
@@ -124,7 +126,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-black dark:text-white"
+            className="block text-sm font-medium text-black "
           >
             Phone Number:
           </label>

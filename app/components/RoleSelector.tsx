@@ -2,9 +2,9 @@
 import React, { Fragment, useState } from "react";
 
 const roles = [
-  { id: 1, name: "Admin" },
-  { id: 2, name: "User" },
-  { id: 3, name: "Guest" },
+  { id: 1, name: "Driver" },
+  { id: 2, name: "Fleet Manager" },
+  { id: 3, name: "Admin" },
 ];
 
 interface RoleSelectorProps {
@@ -26,10 +26,7 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({
   return (
     <Fragment>
       <div className="relative">
-        <label
-          htmlFor="role"
-          className="block text-sm font-medium text-black dark:text-white"
-        >
+        <label htmlFor="role" className="block text-sm font-medium text-black ">
           Role:
         </label>
         <button
