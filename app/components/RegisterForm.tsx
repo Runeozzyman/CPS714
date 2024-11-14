@@ -12,6 +12,7 @@ export default function RegisterForm() {
   const [phone, setPhone] = useState("");
   const [selectedRole, setSelectedRole] = useState({ id: 1, name: "Admin" }); // New state for selected role
   const [errorMessage, setErrorMessage] = useState("");
+  const [username, setUsername] = useState("");
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -24,6 +25,7 @@ export default function RegisterForm() {
     handleRegister(
       e,
       fullname,
+      username,
       email,
       password,
       phone,
@@ -35,11 +37,14 @@ export default function RegisterForm() {
 
   return (
     <Fragment>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 w-full max-w-xs p-6 bg-white bg-opacity-80 rounded shadow-md "
+      >
         <div>
           <label
             htmlFor="fullname"
-            className="block text-sm font-medium text-black dark:text-white"
+            className="block text-sm font-medium text-black"
           >
             Full Name:
           </label>
@@ -48,7 +53,23 @@ export default function RegisterForm() {
             id="fullname"
             value={fullname}
             onChange={(e) => setFullname(e.target.value)}
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black dark:text-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black"
+            required
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="Username"
+            className="block text-sm font-medium text-black"
+          >
+            Username
+          </label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black"
             required
           />
         </div>
@@ -64,7 +85,7 @@ export default function RegisterForm() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black dark:text-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black"
             required
           />
         </div>
@@ -80,7 +101,7 @@ export default function RegisterForm() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black dark:text-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black"
             required
           />
         </div>
@@ -96,7 +117,7 @@ export default function RegisterForm() {
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black dark:text-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black"
             required
           />
         </div>
@@ -112,7 +133,7 @@ export default function RegisterForm() {
             id="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black dark:text-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black"
             required
           />
         </div>
