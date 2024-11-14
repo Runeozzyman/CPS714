@@ -60,3 +60,9 @@ def delete_data(id):
     mongo = current_app.extensions['pymongo']
     mongo.db.your_collection.delete_one({'_id': ObjectId(id)})
     return jsonify({'message': 'Data deleted successfully'}), 200
+
+@data_bp.route('/api/database/companies', methods=['GET'])
+def get_unique_companies():
+    mongo = current_app.extensions['pymongo']
+    companies = mongo.db.your_collection.distinct('company')
+    return jsonify({'companies': companies}), 200

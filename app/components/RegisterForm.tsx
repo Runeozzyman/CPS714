@@ -1,8 +1,9 @@
 "use client";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { handleRegister } from "../services/handleRegister"; // Adjust the path as necessary
 import RoleSelector from "../components/RoleSelector"; // Adjust the path as necessary
+import CompanyInput from "../components/CompanyInput"; // Import the CompanyInput component
 
 export default function RegisterForm() {
   const [fullname, setFullname] = useState("");
@@ -11,9 +12,28 @@ export default function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [selectedRole, setSelectedRole] = useState({ id: 1, name: "Driver" }); // New state for selected role
+  const [company, setCompany] = useState(""); // State for company name
+  const [companies, setCompanies] = useState([]); // State for list of companies
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    // Fetch the list of companies from the backend
+    const fetchCompanies = async () => {
+      /*try {
+        const response = await fetch(
+          "http://127.0.0.1:8080/api/database/companies"
+        );
+        const data = await response.json();
+        setCompanies(data.companies);
+      } catch (error) {
+        console.error("Error fetching companies:", error);
+      }*/
+    };
+
+    fetchCompanies();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +59,7 @@ export default function RegisterForm() {
     <Fragment>
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 w-full max-w-xs p-6 bg-white bg-opacity-80 rounded shadow-md "
+        className="space-y-4 w-full max-w-xs p-6 bg-white bg-opacity-90 rounded shadow-md "
       >
         {" "}
         <h1 className="text-center text-4xl font-bold text-black">Sign Up</h1>
@@ -61,7 +81,7 @@ export default function RegisterForm() {
         </div>
         <div>
           <label
-            htmlFor="Username"
+            htmlFor="username"
             className="block text-sm font-medium text-black"
           >
             Username
@@ -143,6 +163,13 @@ export default function RegisterForm() {
           selectedRole={selectedRole}
           setSelectedRole={setSelectedRole}
         />
+        {selectedRole.name === "Fleet Manager" && (
+          <CompanyInput
+            company={company}
+            setCompany={setCompany}
+            companies={companies}
+          />
+        )}
         {errorMessage && (
           <p className="text-center text-red-500 dark:text-red-400">
             Error: {errorMessage}

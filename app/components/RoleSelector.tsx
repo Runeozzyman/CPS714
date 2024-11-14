@@ -26,31 +26,29 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({
   return (
     <Fragment>
       <div className="relative">
-        <label htmlFor="role" className="block text-sm font-medium text-black ">
+        <label htmlFor="role" className="block text-sm font-medium text-black">
           Role:
         </label>
         <button
           type="button"
-          className="relative w-full cursor-default rounded-md bg-white dark:bg-gray-800 py-1.5 pl-3 pr-10 text-left text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm"
+          className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm"
           onClick={() => setIsOpen(!isOpen)}
         >
           <span className="block truncate">{selectedRole.name}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-            <span className="h-5 w-5 text-gray-400 dark:text-gray-300">
-              {isOpen ? "▲" : "▼"}
-            </span>
+            <span className="h-5 w-5 text-gray-400">{isOpen ? "▲" : "▼"}</span>
           </span>
         </button>
         {isOpen && (
-          <ul className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+          <ul className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {roles.map((role) => (
               <li
                 key={role.id}
                 className={`cursor-default select-none relative py-2 pl-3 pr-9 ${
                   selectedRole.id === role.id
-                    ? "text-white bg-indigo-600 dark:bg-indigo-600"
-                    : "text-gray-900 dark:text-white"
-                } hover:bg-gray-100 dark:hover:bg-gray-700`}
+                    ? "text-white bg-blue-600"
+                    : "text-gray-900"
+                } hover:bg-blue-200`}
                 onClick={() => handleSelect(role)}
               >
                 <span
@@ -63,7 +61,7 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({
                   {role.name}
                 </span>
                 {selectedRole.id === role.id && (
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 dark:text-indigo-400">
+                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-blue-600">
                     ✓
                   </span>
                 )}
