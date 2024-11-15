@@ -68,8 +68,8 @@ try {
   });
   db.getCollection(collection).insertOne({
     fullname: 'Gustavo Fring',
-    username: 'TestUser',
-    password:'password',//password is password
+    username: 'Gus',
+    password:'2b$12$eHc/yYEE9NCA1V3F9toJjuwgHTgfnLI9wSLkrNIwlbAPzZg6FXu3q',//password is blue
     email: 'user@example.com',
     phone: '123-456-7890',
     role: 'Driver',
