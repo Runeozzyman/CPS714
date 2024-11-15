@@ -24,7 +24,7 @@ db.createCollection(collection, {
           description: 'must be a string and is required'
         },
         password: {
-          bsonType: 'binData',
+          bsonType: 'string',
           description: 'must be binary data for a password hash and is required'
         },
         email: {
@@ -42,6 +42,10 @@ db.createCollection(collection, {
         loyaltypoints: {
           bsonType: 'number',
           description: 'must be an integer and defaults to 0 if not provided'
+        },
+        company: {
+          bsonType: 'string',
+          description: 'must be a string and is required'
         }
       }
     }
@@ -56,11 +60,21 @@ try {
   db.getCollection(collection).insertOne({
     fullname: 'Sample Smith',
     username: 'sampleUser',
-    password: new BinData(0, "hashed_password_here"),
+    password: 'hash',
     email: 'user@example.com',
     phone: '123-456-7890',
-    role: 'user',
+    role: 'Driver',
     loyaltypoints: 100
+  });
+  db.getCollection(collection).insertOne({
+    fullname: 'Gustavo Fring',
+    username: 'TestUser',
+    password:'password',//password is password
+    email: 'user@example.com',
+    phone: '123-456-7890',
+    role: 'Driver',
+    loyaltypoints: 100,
+    company: 'Los Polos Hermanos'
   });
   console.log('Collection created with constraints, and sample data inserted successfully.');
 } catch (error) {

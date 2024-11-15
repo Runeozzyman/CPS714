@@ -9,9 +9,9 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     handleLogin(e, username, password, setErrorMessage, router);
   };
 

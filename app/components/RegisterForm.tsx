@@ -18,7 +18,7 @@ export default function RegisterForm() {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
-  /*useEffect(() => {
+  useEffect(() => {
     // Fetch the list of companies from the backend
     const fetchCompanies = async () => {
       try {
@@ -33,26 +33,48 @@ export default function RegisterForm() {
     };
 
     fetchCompanies();
-  }, []);*/
+  }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match");
       return;
     }
     setErrorMessage("");
-    handleRegister(
-      e,
+
+    const newUser = {
       fullname,
       username,
       email,
       password,
       phone,
-      selectedRole.name, // Pass the selected role name
-      setErrorMessage,
-      router
-    );
+      role: selectedRole.name,
+      loyaltypoints: 0,
+      company,
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:8080/api/database", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Registration successful:", data);
+        router.push("/Home");
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setErrorMessage("Registration failed");
+    }
   };
 
   return (
@@ -61,7 +83,6 @@ export default function RegisterForm() {
         onSubmit={handleSubmit}
         className="space-y-4 w-full max-w-xs p-6 bg-white bg-opacity-90 rounded shadow-md "
       >
-        {" "}
         <h1 className="text-center text-4xl font-bold text-black">Sign Up</h1>
         <div>
           <label

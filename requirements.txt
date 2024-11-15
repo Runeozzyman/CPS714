@@ -1,4 +1,4 @@
 Flask
 flask_cors
 flask-pymongo
-bcrypt
+Flask-Bcrypt
