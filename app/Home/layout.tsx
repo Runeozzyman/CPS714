@@ -38,7 +38,7 @@ export default function RootLayout({
         <header className="text-gray-600 body-font">
           <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <a href="/Home" className="flex title-font font-medium items-center mb-4 md:mb-0" style={{color: "#4CAF50"}}>
-              <span className="ml-3 text-xl">FleetRewards Feedback</span>
+              <span className="ml-3 text-xl">FleetRewards</span>
             </a>
             <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center">
               <Link href="/Home/FeedbackForm" className="mr-5">Feedback Form</Link>
