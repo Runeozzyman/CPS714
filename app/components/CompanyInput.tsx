@@ -1,17 +1,31 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface CompanyInputProps {
   company: string;
   setCompany: (company: string) => void;
-  companies: string[]; // List of companies
 }
 
-const CompanyInput: React.FC<CompanyInputProps> = ({
-  company,
-  setCompany,
-  companies,
-}) => {
+const CompanyInput: React.FC<CompanyInputProps> = ({ company, setCompany }) => {
+  const [companies, setCompanies] = useState<string[]>([]); // State for list of companies
+
+  useEffect(() => {
+    // Fetch the list of companies from the backend
+    const fetchCompanies = async () => {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:8080/api/database/companies"
+        );
+        const data = await response.json();
+        setCompanies(data.companies);
+      } catch (error) {
+        console.error("Error fetching companies:", error);
+      }
+    };
+
+    fetchCompanies();
+  }, []);
+
   return (
     <div>
       <label htmlFor="company" className="block text-sm font-medium text-black">
@@ -23,7 +37,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({
         id="company"
         value={company}
         onChange={(e) => setCompany(e.target.value)}
-        className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black "
+        className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200 text-black"
         required
       />
       <datalist id="company-list">

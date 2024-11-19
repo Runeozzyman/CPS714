@@ -1,5 +1,5 @@
 "use client";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import { handleRegister } from "../services/handleRegister"; // Adjust the path as necessary
 import RoleSelector from "../components/RoleSelector"; // Adjust the path as necessary
@@ -13,27 +13,9 @@ export default function RegisterForm() {
   const [phone, setPhone] = useState("");
   const [selectedRole, setSelectedRole] = useState({ id: 1, name: "Driver" }); // New state for selected role
   const [company, setCompany] = useState(""); // State for company name
-  const [companies, setCompanies] = useState([]); // State for list of companies
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const router = useRouter();
-
-  useEffect(() => {
-    // Fetch the list of companies from the backend
-    const fetchCompanies = async () => {
-      try {
-        const response = await fetch(
-          "http://127.0.0.1:8080/api/database/companies"
-        );
-        const data = await response.json();
-        setCompanies(data.companies);
-      } catch (error) {
-        console.error("Error fetching companies:", error);
-      }
-    };
-
-    fetchCompanies();
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,7 +101,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-black "
+            className="block text-sm font-medium text-black"
           >
             Email:
           </label>
@@ -135,7 +117,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-black "
+            className="block text-sm font-medium text-black"
           >
             Password:
           </label>
@@ -151,7 +133,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="confirmPassword"
-            className="block text-sm font-medium text-black "
+            className="block text-sm font-medium text-black"
           >
             Confirm Password:
           </label>
@@ -167,7 +149,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-black "
+            className="block text-sm font-medium text-black"
           >
             Phone Number:
           </label>
@@ -185,21 +167,15 @@ export default function RegisterForm() {
           setSelectedRole={setSelectedRole}
         />
         {selectedRole.name === "Fleet Manager" && (
-          <CompanyInput
-            company={company}
-            setCompany={setCompany}
-            companies={companies}
-          />
+          <CompanyInput company={company} setCompany={setCompany} />
         )}
         {errorMessage && (
-          <p className="text-center text-red-500 dark:text-red-400">
-            Error: {errorMessage}
-          </p>
+          <p className="text-center text-red-500">Error: {errorMessage}</p>
         )}
         <div className="text-center">
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
+            className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
           >
             Submit
           </button>

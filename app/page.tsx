@@ -20,11 +20,6 @@ export default function Login() {
             </button>
           </a>
           <br />
-          <Link href="/api/python">
-            <code className="px-20 text-gray-600 font-mono font-bold">
-              api/index.py
-            </code>
-          </Link>
         </div>
       </div>
     </Fragment>
