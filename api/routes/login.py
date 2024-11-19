@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
+import globals
 
 def login(mongo: PyMongo, bcrypt: Bcrypt):
     login_bp = Blueprint('login', __name__)
@@ -35,6 +36,7 @@ def login(mongo: PyMongo, bcrypt: Bcrypt):
         is_valid, message = verify_password(mongo, bcrypt, username, password)
 
         if is_valid:
+            globals.logged_in_username = username
             return jsonify({'message': message}), 200
         else:
             return jsonify({'message': message}), 401
