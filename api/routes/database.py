@@ -140,4 +140,25 @@ def create_data_bp(mongo: PyMongo, bcrypt: Bcrypt):
 
         return jsonify({'message': 'New verification email sent'}), 200
 
+    @data_bp.route('/api/database/addPoints', methods=['PUT'])
+    def add_points():
+        request_data = request.json
+        username = request_data.get('username')
+        points_to_add = request_data.get('points', 0)  # Default to 0 if no points provided
+
+        if not username:
+            return jsonify({'message': 'Username is required'}), 400
+
+        # Find the user by username
+        user = mongo.db.Users.find_one({'username': username})
+
+        if not user:
+            return jsonify({'message': 'User not found'}), 404
+
+        # Update the user's loyalty points
+        new_loyalty_points = user.get('loyaltypoints', 0) + points_to_add
+        mongo.db.Users.update_one({'username': username}, {'$set': {'loyaltypoints': new_loyalty_points}})
+
+        return jsonify({'message': f'{points_to_add} points added successfully', 'new_loyalty_points': new_loyalty_points}), 200
+
     return data_bp
