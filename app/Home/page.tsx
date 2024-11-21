@@ -5,7 +5,7 @@ import Username from "../components/UserName";
 import { useSession } from "next-auth/react";
 
 const Home = async () => {
-  const { data } = useSession();
+  //const { data } = useSession();
   const res = await fetch("https://jsonplaceholder.typicode.com/users", {
     next: { revalidate: 10 },
   });
