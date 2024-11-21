@@ -15,7 +15,7 @@ export default function Login() {
           </h2>
           <LoginField />
           <a href="/register">
-            <button className="w-full px-4 py-2  text-white bg-yellow-500 rounded hover:bg-yellow-800 focus:outline-none focus:ring focus:ring-yellow-900">
+            <button className="w-full px-4 py-2  text-white bg-yellow-500 hover:bg-yellow-800 focus:outline-none focus:ring focus:ring-yellow-900">
               Sign Up
             </button>
           </a>

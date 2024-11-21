@@ -4,8 +4,10 @@ import { useRouter } from "next/navigation";
 import { handleRegister } from "../services/handleRegister"; // Adjust the path as necessary
 import RoleSelector from "../components/RoleSelector"; // Adjust the path as necessary
 import CompanyInput from "../components/CompanyInput"; // Import the CompanyInput component
+import { useToast } from "./ui/use-toast";
 
 export default function RegisterForm() {
+  const router = useRouter();
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +17,9 @@ export default function RegisterForm() {
   const [company, setCompany] = useState(""); // State for company name
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
-  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,38 +29,20 @@ export default function RegisterForm() {
     }
     setErrorMessage("");
 
-    const newUser = {
+    await handleRegister(
+      e,
       fullname,
       username,
       email,
       password,
       phone,
-      role: selectedRole.name,
-      loyaltypoints: 0,
+      selectedRole.name,
       company,
-    };
-
-    try {
-      const response = await fetch("http://127.0.0.1:8080/api/database", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Registration successful:", data);
-        router.push("/Home");
-      } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || "Registration failed");
-      }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      setErrorMessage("Registration failed");
-    }
+      setErrorMessage,
+      setLoading,
+      toast,
+      router
+    );
   };
 
   return (
@@ -175,9 +161,10 @@ export default function RegisterForm() {
         <div className="text-center">
           <button
             type="submit"
+            disabled={loading}
             className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
           >
-            Submit
+            {loading ? "Loading..." : "Register"}
           </button>
         </div>
       </form>

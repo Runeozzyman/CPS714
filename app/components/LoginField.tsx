@@ -62,7 +62,7 @@ export default function Login() {
         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
         <button
           type="submit"
-          className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+          className="w-full px-4 py-2 text-white bg-blue-500 hover:bg-blue-600"
         >
           Login
         </button>
