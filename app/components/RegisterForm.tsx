@@ -1,9 +1,10 @@
 "use client";
 import React, { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
-import { handleRegister } from "../services/handleRegister"; // Adjust the path as necessary
-import RoleSelector from "../components/RoleSelector"; // Adjust the path as necessary
-import CompanyInput from "../components/CompanyInput"; // Import the CompanyInput component
+import { handleRegister } from "../services/handleRegister";
+import RoleSelector from "../components/RoleSelector";
+import CompanyInput from "../components/CompanyInput";
+import { User } from "../interfaces/users";
 import { useToast } from "./ui/use-toast";
 
 export default function RegisterForm() {
@@ -14,7 +15,7 @@ export default function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [selectedRole, setSelectedRole] = useState({ id: 1, name: "Driver" }); // New state for selected role
-  const [company, setCompany] = useState(""); // State for company name
+  const [company, setCompany] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,21 +24,27 @@ export default function RegisterForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match");
       return;
     }
-    setErrorMessage("");
+    setLoading(true);
 
-    await handleRegister(
-      e,
+    const newUser: User = {
       fullname,
       username,
       email,
       password,
       phone,
-      selectedRole.name,
+      role: selectedRole.name,
+      loyaltypoints: 0,
       company,
+    };
+
+    await handleRegister(
+      e,
+      newUser,
       setErrorMessage,
       setLoading,
       toast,

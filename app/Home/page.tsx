@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Message } from "../interfaces/message";
-import { Users } from "../interfaces/users";
+import { Users } from "../interfaces/test/users";
 import Username from "../components/UserName";
 
 const Home = async () => {
