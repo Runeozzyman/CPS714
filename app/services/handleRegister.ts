@@ -1,17 +1,16 @@
 import { useRouter } from "next/navigation";
-import { User } from "../interfaces/users"; // Adjust the path as necessary
+import { User } from "@/interfaces/users"; // Adjust the path as necessary
+
 
 export const handleRegister = async (
   e: React.FormEvent,
   user: User,
   setErrorMessage: (message: string) => void,
   setLoading: (loading: boolean) => void,
-  toast: (options: { title: string }) => void,
   router: ReturnType<typeof useRouter>
 ) => {
   e.preventDefault();
   setLoading(true);
-
 
   try {
     const response = await fetch("http://127.0.0.1:8080/api/database", {
@@ -25,10 +24,7 @@ export const handleRegister = async (
     if (response.ok) {
       const data = await response.json();
       console.log("Registration successful:", data);
-      toast({
-        title: "Account Created Successfully!",
-      });
-      //router.push("/Home");
+      router.push("/Home");
     } else {
       const errorData = await response.json();
       setErrorMessage(errorData.message || "Registration failed");

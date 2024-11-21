@@ -68,7 +68,7 @@ def create_data_bp(mongo: PyMongo, bcrypt: Bcrypt):
         user_id = result.inserted_id
 
         # Send verification email
-        send_verification_email(email, verification_token, user_id)
+        #send_verification_email(email, verification_token, user_id)
 
         globals.logged_in_username = username
         return jsonify({'message': 'Data added successfully. Please verify your email.'}), 201
@@ -110,5 +110,34 @@ def create_data_bp(mongo: PyMongo, bcrypt: Bcrypt):
         )
 
         return jsonify({'message': 'Email verified successfully'}), 200
+
+    @data_bp.route('/api/renew-token', methods=['POST'])
+    def renew_token():
+        data = request.json
+        email = data.get('email')
+
+        user = mongo.db.Users.find_one({'email': email})
+
+        if not user:
+            return jsonify({'message': 'User not found'}), 404
+
+        if user.get('isVerified'):
+            return jsonify({'message': 'User is already verified'}), 400
+
+        # Generate new verification token
+        verification_token = secrets.token_hex(20)
+        hashed_verification_token = hashlib.sha256(verification_token.encode()).hexdigest()
+        verification_token_expire = datetime.datetime.now() + datetime.timedelta(minutes=30)
+
+        # Update user with new token and expiration
+        mongo.db.Users.update_one(
+            {'_id': user['_id']},
+            {'$set': {'verifyToken': hashed_verification_token, 'verifyTokenExpire': verification_token_expire}}
+        )
+
+        # Send new verification email
+        #send_verification_email(email, verification_token, user['_id'])
+
+        return jsonify({'message': 'New verification email sent'}), 200
 
     return data_bp

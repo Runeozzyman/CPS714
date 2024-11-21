@@ -1,11 +1,11 @@
 "use client";
 import React, { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
-import { handleRegister } from "../services/handleRegister";
-import RoleSelector from "../components/RoleSelector";
-import CompanyInput from "../components/CompanyInput";
-import { User } from "../interfaces/users";
-import { useToast } from "./ui/use-toast";
+import { handleRegister } from "@/services/handleRegister";
+import RoleSelector from "@/components/RoleSelector";
+import CompanyInput from "@/components/CompanyInput";
+import { User } from "@/interfaces/users";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -19,7 +19,6 @@ export default function RegisterForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
-
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,14 +41,10 @@ export default function RegisterForm() {
       company,
     };
 
-    await handleRegister(
-      e,
-      newUser,
-      setErrorMessage,
-      setLoading,
-      toast,
-      router
-    );
+    await handleRegister(e, newUser, setErrorMessage, setLoading, router);
+    toast({
+      title: "Account Created Successfully!",
+    });
   };
 
   return (

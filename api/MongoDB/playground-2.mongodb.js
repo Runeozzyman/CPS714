@@ -13,7 +13,7 @@ db.createCollection(collection, {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
-      required: ['fullname', 'username', 'password', 'email', 'phone', 'role', 'loyaltypoints'],
+      required: ['fullname', 'username', 'password', 'email', 'phone', 'role', 'loyaltypoints', 'isVerified'],
       properties: {
         fullname: {
           bsonType: 'string',
@@ -25,7 +25,7 @@ db.createCollection(collection, {
         },
         password: {
           bsonType: 'string',
-          description: 'must be binary data for a password hash and is required'
+          description: 'must be a string and is required'
         },
         email: {
           bsonType: 'string',
@@ -46,6 +46,18 @@ db.createCollection(collection, {
         company: {
           bsonType: 'string',
           description: 'must be a string and is required'
+        },
+        isVerified: {
+          bsonType: 'bool',
+          description: 'must be a boolean and is required'
+        },
+        verifyToken: {
+          bsonType: 'string',
+          description: 'must be a string'
+        },
+        verifyTokenExpire: {
+          bsonType: 'date',
+          description: 'must be a date'
         }
       }
     }
@@ -64,7 +76,8 @@ try {
     email: 'user@example.com',
     phone: '123-456-7890',
     role: 'Driver',
-    loyaltypoints: 100
+    loyaltypoints: 100,
+    isVerified: false
   });
   db.getCollection(collection).insertOne({
     fullname: 'Gustavo Fring',
@@ -74,7 +87,8 @@ try {
     phone: '123-456-7890',
     role: 'Driver',
     loyaltypoints: 100,
-    company: 'Los Polos Hermanos'
+    company: 'Los Polos Hermanos',
+    isVerified: false
   });
   console.log('Collection created with constraints, and sample data inserted successfully.');
 } catch (error) {

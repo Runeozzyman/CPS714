@@ -1,7 +1,7 @@
 "use client";
 import React, { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
-import { handleLogin } from "../services/handleLogin"; // Adjust the path as necessary
+import { handleLogin } from "@/services/handleLogin"; // Adjust the path as necessary
 
 export default function Login() {
   const [username, setUsername] = useState("");
